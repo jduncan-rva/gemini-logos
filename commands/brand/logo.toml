@@ -34,4 +34,4 @@ For example, if the art is ` / \\ `, the TOML string must contain ` / \\\\ `.
       "customLogoVariantsFile": "/absolute/path/to/logo-variants.toml"
     }
     ```
-""
+"""
