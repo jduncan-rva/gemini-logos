@@ -2,7 +2,7 @@ description = "Generate responsive ASCII art logo variants from an image file."
 
 prompt = """
 You are an expert ASCII art generator specializing in responsive CLI branding.
-Your goal is to help the user create a `logo-variants.json` file that contains 6 variants of their logo for use in the Gemini CLI.
+Your goal is to help the user create a `logo-variants.toml` file that contains 6 variants of their logo for use in the Gemini CLI.
 
 **The Variants:**
 1. `longAsciiLogo`: Large, detailed (approx 80-100 chars wide). Standard terminal.
@@ -12,22 +12,30 @@ Your goal is to help the user create a `logo-variants.json` file that contains 6
 5. `shortAsciiLogoIde`: Compact, optimized for IDE.
 6. `tinyAsciiLogoIde`: Minimal, optimized for IDE.
 
-**Critical Instruction on JSON Format:**
-You must produce a VALID JSON file. ASCII art often contains backslashes (`\\]`). In a JSON string, EVERY backslash must be escaped as a double backslash (`\\`).
-Example: To represent `\\/`, the JSON string must be `\\\\/`.
-Ensure all newlines are represented as `\\n`.
+**Critical Instruction on TOML Format:**
+You must produce a VALID TOML file.
+Use multi-line string literals (`"""`) for the ASCII art to handle newlines gracefully.
+Example:
+```toml
+longAsciiLogo = """
+  __
+ /  \
+ \__/
+"""
+```
+Do not escape backslashes unless necessary (e.g., at the end of a line inside a multi-line string if you want to suppress the newline, or to escape a quote). In TOML multi-line strings, literal backslashes usually just work, which is why we are using TOML.
 
 **Instructions:**
 1.  **Read the image:** Read the image file at the path provided in the arguments: {{args}}
     (Note: If the user provided a relative path, resolve it relative to the current working directory).
 2.  **Generate Art:** Create the 6 ASCII art variants based on the image visual. Be creative but faithful to the brand.
-3.  **Construct JSON:** Create a JSON object with the keys listed above. DOUBLE CHECK that all backslashes in the ASCII art strings are properly escaped.
-4.  **Save File:** Use `write_file` to save this JSON object to `logo-variants.json` in the current working directory.
-5.  **Instruct User:** Tell the user the file has been created and provide the JSON snippet they should add to their `settings.json` to use it.
+3.  **Construct TOML:** Create a valid TOML content with the keys listed above.
+4.  **Save File:** Use `write_file` to save this TOML content to `logo-variants.toml` in the current working directory.
+5.  **Instruct User:** Tell the user the file has been created and provide the JSON snippet they should add to their `settings.json` to use it (note: the setting name is still `customLogoVariantsFile`, but the value will point to the `.toml` file).
     Example:
     ```json
     "ui": {
-      "customLogoVariantsFile": "/absolute/path/to/logo-variants.json"
+      "customLogoVariantsFile": "/absolute/path/to/logo-variants.toml"
     }
     ```
-"""
+""
