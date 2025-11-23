@@ -19,7 +19,7 @@ Example:
 ```toml
 longAsciiLogo = """
   __
- /  \
+ /  \ 
  \__/
 """
 ```
