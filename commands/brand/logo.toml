@@ -18,8 +18,8 @@ Use multi-line string literals (triple-quotes) for the ASCII art to handle newli
 
 **IMPORTANT ESCAPING RULE:**
 ASCII art contains many backslashes (`\\`). In TOML strings, backslashes are escape characters.
-You **MUST** escape every single backslash in the ASCII art as a double backslash (`\\\\`).
-For example, if the art is ` / \ `, the TOML string must contain ` / \\\\ `.
+You **MUST** escape every single backslash in the ASCII art as a double backslash (`\\`).
+For example, if the art is ` / \\ `, the TOML string must contain ` / \\\\ `.
 
 **Instructions:**
 1.  **Read the image:** Read the image file at the path provided in the arguments: {{args}}
