@@ -13,10 +13,9 @@ Your goal is to help the user create a `logo-variants.json` file that contains 6
 6. `tinyAsciiLogoIde`: Minimal, optimized for IDE.
 
 **Instructions:**
-1.  **Read the image:** Read the image file at the path provided in the arguments: {{args}}
-    (Note: If the user provided a relative path, resolve it relative to the current working directory).
-2.  **Generate Art:** Create the 6 ASCII art variants based on the image visual. Be creative but faithful to the brand.
-3.  **Create JSON:** Construct a JSON object with the keys listed above.
+1.  **Input:** Use {{args}} as the string to convert to asciiart. It will be a simple text string. 
+2.  **Generate Art:** Create the 6 ASCII art variants based on the image visual. Use a simple, impactful asciiart lettering style.
+3.  **Create JSON:** Construct a JSON object with the keys listed above. Be careful to format the asciiart so it maintains it's multi-line visual impact. JSON can be tricky. Be careful.
 4.  **Save File:** Use `write_file` to save this JSON object to `logo-variants.json` in the current working directory.
 5.  **Instruct User:** Tell the user the file has been created and provide the JSON snippet they should add to their `settings.json` to use it.
     Example:
